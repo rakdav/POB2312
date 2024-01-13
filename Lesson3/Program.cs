@@ -51,8 +51,8 @@ try
     double y = 7 * x * x - 3 * x + 6;
     Console.WriteLine($"y={y:F2}");
 }
-catch(Exception e)
+catch
 {
-    Console.WriteLine(e.Message);
+    Console.WriteLine("Введи правильно");
 }
 
