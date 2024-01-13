@@ -24,12 +24,21 @@
 //double F = (t * 9 / 5) + FAR;
 //Console.WriteLine($"{t} C={F:F2} F");
 
-const double BR = 1.0e-5;
-const double RS = 7.50062e-3;
-const double ATM = 1.01e-5;
-Console.Write("Введите давление в Паскалях:");
-double P = double.Parse(Console.ReadLine());
-Console.WriteLine($"{P} Па={P*BR} Бар");
-Console.WriteLine($"{P} Па={P*RS} мм.рт.ст");
-Console.WriteLine($"{P} Па={P*ATM} атм");
+//const double BR = 1.0e-5;
+//const double RS = 7.50062e-3;
+//const double ATM = 1.01e-5;
+//Console.Write("Введите давление в Паскалях:");
+//double P = double.Parse(Console.ReadLine());
+//Console.WriteLine($"{P} Па={P*BR} Бар");
+//Console.WriteLine($"{P} Па={P*RS} мм.рт.ст");
+//Console.WriteLine($"{P} Па={P*ATM} атм");
 
+Console.Write("Введите двухзначное число:");
+int n = int.Parse(Console.ReadLine());
+int a = n % 10;
+Console.WriteLine($"Число единиц:{a}");
+int b = n / 10;
+Console.WriteLine($"Число десятков:{b}");
+Console.WriteLine($"Сумма цифр:{a+b}");
+Console.WriteLine($"Произведение цифр:{a * b}");
+Console.WriteLine($"Число при перестановке {a*10+b}");
