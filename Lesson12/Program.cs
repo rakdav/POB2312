@@ -186,14 +186,59 @@
 //    case 12: Console.WriteLine("Январь"); break;
 //}
 
-Console.Write("Введите сумму:");
-int rub = int.Parse(Console.ReadLine());
-if(rub%100>=11&&rub%100<=14) Console.WriteLine($"{rub} рублей");
-else
-switch (rub % 10)
-{
-    case 1:
-        Console.WriteLine($"{rub} рубль");break;
-    case 2: case 3: case 4: Console.WriteLine($"{rub} рубля"); break;
-    default: Console.WriteLine($"{rub} рублей"); break;
-}
+//Console.Write("Введите сумму:");
+//int rub = int.Parse(Console.ReadLine());
+//if(rub%100>=11&&rub%100<=14) Console.WriteLine($"{rub} рублей");
+//else
+//switch (rub % 10)
+//{
+//    case 1:
+//        Console.WriteLine($"{rub} рубль");break;
+//    case 2: case 3: case 4: Console.WriteLine($"{rub} рубля"); break;
+////    default: Console.WriteLine($"{rub} рублей"); break;
+//}
+int a;
+double Sum = 0;
+int CountGreat10 = 0;
+int CountLess10 = 0;
+double avg = 0;
+int min;
+int max;
+Console.Write("Введите 1 число:");
+a= int.Parse(Console.ReadLine());
+Sum += a;
+CountGreat10 = (a > 10) ? CountGreat10++ : CountGreat10;
+CountLess10 = (a < 10) ? CountLess10++ : CountLess10;
+min = a;
+max = a;
+
+Console.Write("Введите 2 число:");
+a = int.Parse(Console.ReadLine());
+Sum += a;
+CountGreat10 = (a > 10) ? CountGreat10++ : CountGreat10;
+CountLess10 = (a < 10) ? CountLess10++ : CountLess10;
+if(a<min) min = a;
+if(a>max) max= a;
+
+Console.Write("Введите 3 число:");
+a = int.Parse(Console.ReadLine());
+Sum += a;
+CountGreat10 = (a > 10) ? CountGreat10++ : CountGreat10;
+CountLess10 = (a < 10) ? CountLess10++ : CountLess10;
+if (a < min) min = a;
+if (a > max) max = a;
+
+Console.Write("Введите 4 число:");
+a = int.Parse(Console.ReadLine());
+Sum += a;
+CountGreat10 = (a > 10) ? CountGreat10++ : CountGreat10;
+CountLess10 = (a < 10) ? CountLess10++ : CountLess10;
+if (a < min) min = a;
+if (a > max) max = a;
+
+Console.WriteLine("Sum="+Sum);
+Console.WriteLine(">10="+CountGreat10);
+Console.WriteLine("<=10"+CountLess10);
+Console.WriteLine("AVG="+(Sum/4));
+Console.WriteLine(min);
+Console.WriteLine(max);
