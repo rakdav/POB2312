@@ -147,19 +147,32 @@
 //От пользователя берется число, и производится поиск числа в массиве. 
 //Если число найдено, выведите его на экран, если нет, выведите “число 
 //не найдено”
-int[] mas = {4,7,3,9,2,5,8};
-Console.Write("Введите число:");
-int n = int.Parse(Console.ReadLine());
-bool have = false;
+//int[] mas = {4,7,3,9,2,5,8};
+//Console.Write("Введите число:");
+//int n = int.Parse(Console.ReadLine());
+//bool have = false;
+//for (int i = 0; i < mas.Length; i++)
+//{
+//    if (mas[i] == n)
+//    {
+//        have = true;
+//        break;
+//    } 
+//}
+//if(have==true) Console.WriteLine(n);
+//else Console.WriteLine("число не найдено");
+
+//6.Создайте массив из 10 случайных целых чисел и найдите в нем сумму всех элементов, кратных 3. 
+int[] mas = new int[10];
+Random random = new Random();
+int sum = 0;
 for (int i = 0; i < mas.Length; i++)
 {
-    if (mas[i] == n)
-    {
-        have = true;
-        break;
-    } 
+    mas[i] = random.Next(10, 100);
+    Console.Write(mas[i]+" ");
+    if (mas[i] % 3 == 0) sum += mas[i];
 }
-if(have==true) Console.WriteLine(n);
-else Console.WriteLine("число не найдено");
+Console.WriteLine();
+Console.WriteLine("sum="+sum);
 
 
