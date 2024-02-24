@@ -148,19 +148,15 @@ foreach (int item in mas)
 }
 Console.WriteLine();
 int count = 0;
-int temp=-1;
 for(int i = 1; i < mas.Length; i++)
 {
-    if (mas[i] == mas[i - 1])
-    {
-        temp = mas[i];
-        count++;
-    }
+    if (mas[i] == mas[i - 1]) count++;
+    
     else if(mas[i] != mas[i - 1])
     {
         if (count > 0)
         {
-            Console.Write(temp + " ");
+            Console.Write(mas[i-1] + " ");
             count = 0;
         }
     }
@@ -168,7 +164,7 @@ for(int i = 1; i < mas.Length; i++)
     {
         if (count > 0)
         {
-            Console.Write(temp + " ");
+            Console.Write(mas[i] + " ");
         }
     }
 }
