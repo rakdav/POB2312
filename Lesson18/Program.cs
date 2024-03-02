@@ -69,26 +69,76 @@
 //2.1 Вывести все элементы массива на экран. 
 //2.2 Вывести три элемента: имя, номер и e-mail по запросу пользователя по имени.
 
-string[,] mas = { {"Tom","987672","Tom@gmail.com"},
-                  {"Jerry","452319","Jerry@gmail.com"},
-                  {"Bob","783412","Bob@gmail.com"}};
-for (int i = 0; i < mas.GetUpperBound(0)+1; i++)
+//string[,] mas = { {"Tom","987672","Tom@gmail.com"},
+//                  {"Jerry","452319","Jerry@gmail.com"},
+//                  {"Bob","783412","Bob@gmail.com"}};
+//for (int i = 0; i < mas.GetUpperBound(0)+1; i++)
+//{
+//    for (int j = 0; j < mas.GetUpperBound(1)+1; j++)
+//    {
+//        Console.Write(mas[i,j]+" ");
+//    }
+//    Console.WriteLine();
+//}
+//Console.Write("Введите имя:");
+//string name = Console.ReadLine();
+//bool isTrue = false;
+//for (int i = 0; i < mas.GetUpperBound(0)+1; i++)
+//{
+//    if (mas[i, 0] == name)
+//    {
+//        isTrue = true;
+//        Console.WriteLine(mas[i,0]+" " + mas[i,1]+" " + mas[i,2]);
+//    }
+//}
+//if (isTrue == false) Console.WriteLine("Элемента нет");
+
+//2.Написать программу для нахождения среднего значения каждой 
+//строки двумерного массива. 
+//Random random = new Random();
+//int n = random.Next(5, 10);//количество строк
+//int m = random.Next(5, 10);//количество столбцов
+//int[,] mas = new int[n, m];
+//for (int i = 0; i < mas.GetUpperBound(0) + 1; i++)
+//{
+//    for (int j = 0; j < mas.GetUpperBound(1) + 1; j++)
+//    {
+//        mas[i, j] = random.Next(10, 100);
+//        Console.Write(mas[i, j] + " ");
+//    }
+//    Console.WriteLine();
+//}
+//for (int i = 0; i < mas.GetUpperBound(0) + 1; i++)
+//{
+//    double sum = 0;
+//    for (int j = 0; j < mas.GetUpperBound(1) + 1; j++)
+//    {
+//        sum += mas[i, j];
+//    }
+//    Console.WriteLine($"Avg {i+1}:{sum/mas.GetUpperBound(1) + 1:F2}");
+//}
+
+Random random = new Random();
+int n = random.Next(5, 10);//количество строк
+int m = random.Next(5, 10);//количество столбцов
+int[,] mas1 = new int[n, m];
+int[,] mas2 = new int[m, n];
+for (int i = 0; i < mas1.GetUpperBound(0) + 1; i++)
 {
-    for (int j = 0; j < mas.GetUpperBound(1)+1; j++)
+    for (int j = 0; j < mas1.GetUpperBound(1) + 1; j++)
     {
-        Console.Write(mas[i,j]+" ");
+        mas1[i, j] = random.Next(10, 100);
+        Console.Write(mas1[i, j] + " ");
+        mas2[j, i] = mas1[i, j];
     }
     Console.WriteLine();
 }
-Console.Write("Введите имя:");
-string name = Console.ReadLine();
-bool isTrue = false;
-for (int i = 0; i < mas.GetUpperBound(0)+1; i++)
+Console.WriteLine();
+for (int i = 0; i < mas2.GetUpperBound(0) + 1; i++)
 {
-    if (mas[i, 0] == name)
+    for (int j = 0; j < mas2.GetUpperBound(1) + 1; j++)
     {
-        isTrue = true;
-        Console.WriteLine(mas[i,0]+" " + mas[i,1]+" " + mas[i,2]);
+        Console.Write(mas2[i, j] + " ");
     }
+    Console.WriteLine();
 }
-if (isTrue == false) Console.WriteLine("Элемента нет");
