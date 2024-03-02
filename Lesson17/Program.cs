@@ -12,6 +12,10 @@
 //    Console.Write(mas[i] + " ");
 //}
 //Console.WriteLine();
+//Console.WriteLine("Введите число:");
+//int m = int.Parse(Console.ReadLine());
+//Console.WriteLine(Array.IndexOf(mas,m));
+//Console.WriteLine();
 //Console.WriteLine(mas[2]);
 //Console.WriteLine(mas.GetValue(2));
 //mas[3] = 6;
@@ -188,40 +192,91 @@
 //которые необходимо удалить и удаляются, заменяясь на “Удален” 
 //Затем, необходимо вывести список имен без “Удален”. 
 
-Random random = new Random();
-string a = "Tom";
-string b = "Jerry";
-string c = "Bob";
-string d = "Mike";
-string e = "Stive";
-string f = "John";
-string[] names = new string[6];
-for (int i = 0; i < names.Length; i++)
-{
-    switch (random.Next(6))
-    {
-        case 0: names[i] = a; break;
-        case 1: names[i] = b; break;
-        case 2: names[i] = c; break;
-        case 3: names[i] = d; break;
-        case 4: names[i] = e; break;
-        case 5: names[i] = f; break;
-    }
-    Console.Write(names[i]+" ");
-}
-Console.WriteLine();
-do
-{
-    Console.Write("Введите имя:");
-    string name = Console.ReadLine();
-    while (Array.IndexOf(names, name) != -1)
-    {
-        names[Array.IndexOf(names, name)] = "Удален";
-    }
-    Console.Write("Продолжить y/n:");
-    char answer = char.Parse(Console.ReadLine());
-    if (answer == 'n') break;
-}
-while (true);
-foreach (string i in names) 
-    if(i!= "Удален") Console.Write(i+" ");
+//Random random = new Random();
+//string a = "Tom";
+//string b = "Jerry";
+//string c = "Bob";
+//string d = "Mike";
+//string e = "Stive";
+//string f = "John";
+//string[] names = new string[6];
+//for (int i = 0; i < names.Length; i++)
+//{
+//    switch (random.Next(6))
+//    {
+//        case 0: names[i] = a; break;
+//        case 1: names[i] = b; break;
+//        case 2: names[i] = c; break;
+//        case 3: names[i] = d; break;
+//        case 4: names[i] = e; break;
+//        case 5: names[i] = f; break;
+//    }
+//    Console.Write(names[i]+" ");
+//}
+//Console.WriteLine();
+//do
+//{
+//    Console.Write("Введите имя:");
+//    string name = Console.ReadLine();
+//    while (Array.IndexOf(names, name) != -1)
+//    {
+//        names[Array.IndexOf(names, name)] = "Удален";
+//    }
+//    Console.Write("Продолжить y/n:");
+//    char answer = char.Parse(Console.ReadLine());
+//    if (answer == 'n') break;
+//}
+//while (true);
+//foreach (string i in names) 
+//    if(i!= "Удален") Console.Write(i+" ");
+
+//Создать 2 массива, создать цикл, заполняющий их случайными числами. 
+//Создать 3й массив, заполняемый разностями чисел первого и второго массива.
+
+//Random random = new Random();
+//Console.Write("Введите размер массива:");
+//int n = int.Parse(Console.ReadLine());
+//int[] mas1 = new int[n];
+//int[] mas2 = new int[n];
+//int[] mas3 = new int[n];
+//for (int i = 0; i < mas1.Length; i++)
+//{
+//    mas1[i] = random.Next(10, 100);
+//    mas2[i] = random.Next(10, 100);
+//    mas3[i] = mas1[i] - mas2[i];
+//    //Console.WriteLine($"{mas1[i]} {mas2[i]} {mas3[i]}");
+//}
+//foreach (int i in mas1) Console.Write(i+" ");
+//Console.WriteLine();
+//foreach (int i in mas2) Console.Write(i + " ");
+//Console.WriteLine();
+//foreach (int i in mas3) Console.Write(i + " ");
+//Console.WriteLine();
+
+//Создать массив объектов, вывести его значения в обратном порядке и 
+//соединить их в строку, в которой, впоследствии, методом Substring() 
+//срезать половину символов (подсчитанных программно). 
+//Random random = new Random();
+//Console.Write("Введите размер массива:");
+//int n = int.Parse(Console.ReadLine());
+//double[] mas = new double[n];
+//for (int i = 0; i < mas.Length; i++)
+//{
+//    mas[i] = random.NextDouble() * 100;
+//    Console.Write($"{mas[i]:F2} ");
+//}
+//Console.WriteLine();
+//Array.Reverse(mas);
+//string strMas = "";
+//foreach (double i in mas)
+//{
+//    Console.Write($"{i:F2} ");
+//    strMas += i.ToString("F2")+" ";
+//}
+//Console.WriteLine();
+//Console.WriteLine(strMas);
+//Console.WriteLine(strMas.Substring(0,strMas.Length/2-1));
+
+//Создать три массива, заполнить их случайными числами. 
+//Создать четвертый, пустой массив, куда поместить средние 
+//арифметические каждого индекса, каждого массива.
