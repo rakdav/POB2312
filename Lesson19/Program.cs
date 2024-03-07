@@ -42,18 +42,13 @@ do
         case 4:
             {
                 for (int i = 0; i < count; i++)
-                {
-                    for (int j = 0; j <mas.GetLength(1); j++)
-                    {
-                        Console.Write(mas[i,j]+" ");
-                    }
-                    Console.WriteLine();
+                { 
+                        Console.WriteLine($"{mas[i, 0],-20}{mas[i, 1],-10}{mas[i, 2],-10}{mas[i,3],5}");
                 }
+                Console.ReadKey();
             }
             break;
         case 5:break;
     }
-    Console.Write("Введите действие:");
-    number = int.Parse(Console.ReadLine());
 }
 while (true);
