@@ -118,27 +118,73 @@
 //    Console.WriteLine($"Avg {i+1}:{sum/mas.GetUpperBound(1) + 1:F2}");
 //}
 
-Random random = new Random();
-int n = random.Next(5, 10);//количество строк
-int m = random.Next(5, 10);//количество столбцов
-int[,] mas1 = new int[n, m];
-int[,] mas2 = new int[m, n];
-for (int i = 0; i < mas1.GetUpperBound(0) + 1; i++)
+//Random random = new Random();
+//int n = random.Next(5, 10);//количество строк
+//int m = random.Next(5, 10);//количество столбцов
+//int[,] mas1 = new int[n, m];
+//int[,] mas2 = new int[m, n];
+//for (int i = 0; i < mas1.GetUpperBound(0) + 1; i++)
+//{
+//    for (int j = 0; j < mas1.GetUpperBound(1) + 1; j++)
+//    {
+//        mas1[i, j] = random.Next(10, 100);
+//        Console.Write(mas1[i, j] + " ");
+//        mas2[j, i] = mas1[i, j];
+//    }
+//    Console.WriteLine();
+//}
+//Console.WriteLine();
+//for (int i = 0; i < mas2.GetUpperBound(0) + 1; i++)
+//{
+//    for (int j = 0; j < mas2.GetUpperBound(1) + 1; j++)
+//    {
+//        Console.Write(mas2[i, j] + " ");
+//    }
+//    Console.WriteLine();
+//}
+
+string[,] mas ={
+    {"","","x","x","",""},    
+    {"","x","","","x",""},
+    {"x","","","","","x"},    
+    {"","x","x","x","x",""},
+    {"","","x","x","",""},    
+    {"","","x","x","",""},
+    {"","","x","x","",""},    
+    {"","","x","x","",""},
+    {"","","x","x","",""},   
+    {"","","x","x","",""},
+    {"","x","x","x","x",""}};
+string answer = "no"; bool isChecked = false;
+do
 {
-    for (int j = 0; j < mas1.GetUpperBound(1) + 1; j++)
+    Console.Clear(); 
+    for (int j = 0; j < mas.GetUpperBound(0) + 1; j++)
     {
-        mas1[i, j] = random.Next(10, 100);
-        Console.Write(mas1[i, j] + " ");
-        mas2[j, i] = mas1[i, j];
+        for (int l = 0; l < mas.GetUpperBound(1) + 1; l++)
+        {
+            if (mas[j, l] != null)
+            {
+                Console.Write($"{mas[j, l],2}");
+            }
+        }
+        Console.WriteLine();
     }
-    Console.WriteLine();
-}
-Console.WriteLine();
-for (int i = 0; i < mas2.GetUpperBound(0) + 1; i++)
-{
-    for (int j = 0; j < mas2.GetUpperBound(1) + 1; j++)
+    if (isChecked == false) Console.Write("Включить лампочку?");
+    else Console.Write("Выключить лампочку?");
+    answer = Console.ReadLine()!; 
+    if (answer == "yes") isChecked = !isChecked;
+    if (isChecked)
     {
-        Console.Write(mas2[i, j] + " ");
+        mas[1, 2] = "x"; mas[1, 3] = "x";
+        mas[2, 2] = "x"; mas[2, 3] = "x";
+        mas[2, 1] = "x"; mas[2, 4] = "x";
     }
-    Console.WriteLine();
+    else
+    {
+        mas[1, 2] = ""; mas[1, 3] = "";
+        mas[2, 2] = ""; mas[2, 3] = "";
+        mas[2, 1] = ""; mas[2, 4] = "";
+    }
 }
+while (true);
