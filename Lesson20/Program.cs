@@ -163,11 +163,30 @@
 //    Console.Write($"{masTotal3[i]:F2} ");
 //}
 
-string str = "ABCDZabz019";
-Random random = new Random();
-string res = "";
-for (int i = 0; i < 4; i++)
+//string str = "ABCDZabz019";
+//Random random = new Random();
+//string res = "";
+//for (int i = 0; i < 4; i++)
+//{
+//    res += str[random.Next(str.Length)];
+//}
+//Console.WriteLine(res);
+int[,] mas =new int[4, 3];
+for (int i = 0; i < mas.GetLength(0); i++)
 {
-    res += str[random.Next(str.Length)];
+	for (int j = 0; j < mas.GetLength(1); j++)
+	{
+		mas[i, j] = int.Parse(Console.ReadLine());
+	}
 }
-Console.WriteLine(res);
+Console.Write("Введите число:");
+int c = int.Parse(Console.ReadLine());
+mas[2, 2] = c;
+for (int i = 0; i < mas.GetLength(0); i++)
+{
+    for (int j = 0; j < mas.GetLength(1); j++)
+    {
+        Console.Write(mas[i,j]+" "); ;
+    }
+    Console.WriteLine();
+}
