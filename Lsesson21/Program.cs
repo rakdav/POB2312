@@ -55,12 +55,12 @@
 //    else Console.WriteLine(int.Parse(mas[i]).GetType());
 //}
 
-//Console.Write("Введите строку ключевых слов через запятую:");
-//string keyText = Console.ReadLine();
-//Console.Write("Введите текст для проверки:");
-//string text= Console.ReadLine();
-//string[] keys = keyText.Split(',');
-//foreach(string key in keys)
-//{
-//    if (text.Contains(key)) Console.WriteLine(key);
+Console.Write("Введите строку ключевых слов через запятую:");
+string keyText = Console.ReadLine();
+Console.Write("Введите текст для проверки:");
+string text = Console.ReadLine();
+string[] keys = keyText.Split(',');
+foreach (string key in keys)
+{
+    if (text.Contains(key)) Console.WriteLine(key);
 }
