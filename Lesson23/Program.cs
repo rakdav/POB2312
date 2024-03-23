@@ -1,8 +1,8 @@
 ﻿char[,] grid = new char[18, 18];
-char[] snake = new char[4];
-int[,] geoSnake =new int[4,2]
+char[] snake = new char[1];
+int[,] geoSnake =new int[1,2]
 {
-    {0,0},{0,1},{0,2},{0,3}
+    {0,0}
 };
 char geo = 'd';
 do
@@ -42,8 +42,32 @@ do
                 }
             }
             break;
-        case 'a':break;
-        case 'w':break;
+        case 'a':
+            {
+                for (int k = 0; k < geoSnake.GetLength(0); k++)
+                {
+                    int temp = geoSnake[k, 1];
+                    temp--;
+                    geoSnake[k, 1] = temp;
+                    int x = geoSnake[k, 0];
+                    int y = geoSnake[k, 1];
+                    grid[x, y] = 'X';
+                }
+            }
+            break;
+        case 'w':
+            {
+                for (int k = 0; k < geoSnake.GetLength(0); k++)
+                {
+                    int temp = geoSnake[k, 0];
+                    temp--;
+                    geoSnake[k, 0] = temp;
+                    int x = geoSnake[k, 0];
+                    int y = geoSnake[k, 1];
+                    grid[x, y] = 'X';
+                }
+            }
+            break;
     }
     
     for (int i = 0; i < grid.GetLength(0); i++)
@@ -55,7 +79,10 @@ do
         }
         Console.WriteLine();
     }
-    geo = Console.ReadKey().KeyChar;
+    if (Console.KeyAvailable)
+    {
+        geo = Console.ReadKey().KeyChar;
+    }
     Thread.Sleep(1000);
 }
 while (true);
