@@ -1,8 +1,8 @@
 ﻿char[,] grid = new char[18, 18];
-char[] snake = new char[1];
-int[,] geoSnake =new int[1,2]
+char[] snake = new char[4];
+int[,] geoSnake =new int[4,2]
 {
-    {0,0}
+    {0,3},{0,2},{0,1},{0,0}
 };
 char geo = 'd';
 do
@@ -18,54 +18,65 @@ do
     switch (geo) {
         case 'd':
             {
-                for (int k = 0; k < geoSnake.GetLength(0); k++)
-                {
-                    int temp = geoSnake[k, 1];
-                    temp++;
-                    geoSnake[k, 1] = temp;
-                    int x = geoSnake[k, 0];
-                    int y = geoSnake[k, 1];
-                    grid[x, y] = 'X';
-                }
+                    int temp = ++geoSnake[0, 1];
+                    geoSnake[0, 1] = temp;
+                    for (int i = 1; i < snake.Length; i++)
+                    {
+                        geoSnake[i, 0] = geoSnake[i - 1, 0];
+                        geoSnake[i, 1] = geoSnake[i - 1, 1];
+                    }
+                    for (int i = 0; i < snake.Length; i++)
+                    {
+                        int x = geoSnake[i, 0];
+                        int y = geoSnake[i, 1];
+                        grid[x, y] = 'X';
+                    }
             }
             break;
         case 's': 
             {
-                for (int k = 0; k < geoSnake.GetLength(0); k++)
-                {
-                    int temp = geoSnake[k, 0];
+                    int temp = geoSnake[0, 0];
+                    geoSnake[1, 0] = geoSnake[0, 0];
+                    geoSnake[1, 1] = geoSnake[0, 1];
                     temp++;
-                    geoSnake[k, 0] = temp;
-                    int x = geoSnake[k, 0];
-                    int y = geoSnake[k, 1];
-                    grid[x, y] = 'X';
-                }
+                    geoSnake[0, 0] = temp;
+                    int x1 = geoSnake[0, 0];
+                    int y1 = geoSnake[0, 1];
+                    int x2 = geoSnake[1, 0];
+                    int y2 = geoSnake[1, 1];
+                    grid[x1, y1] = 'X';
+                    grid[x2, y2] = 'X';
             }
             break;
         case 'a':
             {
-                for (int k = 0; k < geoSnake.GetLength(0); k++)
-                {
-                    int temp = geoSnake[k, 1];
+                    int temp = geoSnake[0, 1];
+                    geoSnake[1, 0] = geoSnake[0, 0];
+                    geoSnake[1, 1] = geoSnake[0, 1];
                     temp--;
-                    geoSnake[k, 1] = temp;
-                    int x = geoSnake[k, 0];
-                    int y = geoSnake[k, 1];
-                    grid[x, y] = 'X';
-                }
+                    geoSnake[0, 1] = temp;
+                    int x1 = geoSnake[0, 0];
+                    int y1 = geoSnake[0, 1];
+                    int x2 = geoSnake[1, 0];
+                    int y2 = geoSnake[1, 1];
+                    grid[x1, y1] = 'X';
+                    grid[x2, y2] = 'X';
             }
             break;
         case 'w':
             {
-                for (int k = 0; k < geoSnake.GetLength(0); k++)
-                {
-                    int temp = geoSnake[k, 0];
+
+                    int temp = geoSnake[0, 0];
+                    geoSnake[1, 0] = geoSnake[0, 0];
+                    geoSnake[1, 1] = geoSnake[0, 1];
                     temp--;
-                    geoSnake[k, 0] = temp;
-                    int x = geoSnake[k, 0];
-                    int y = geoSnake[k, 1];
-                    grid[x, y] = 'X';
-                }
+                    geoSnake[0, 0] = temp;
+                    int x1 = geoSnake[0, 0];
+                    int y1 = geoSnake[0, 1];
+                    int x2 = geoSnake[1, 0];
+                    int y2 = geoSnake[1, 1];
+                    grid[x1, y1] = 'X';
+                    grid[x2, y2] = 'X';
             }
             break;
     }
@@ -74,7 +85,6 @@ do
     {
         for (int j = 0; j < grid.GetLength(1); j++)
         {
-            if (grid[i, j] != 'X') grid[i, j] = '.';
             Console.Write(grid[i, j] + " ");
         }
         Console.WriteLine();
@@ -83,7 +93,7 @@ do
     {
         geo = Console.ReadKey().KeyChar;
     }
-    Thread.Sleep(1000);
+    Thread.Sleep(500);
 }
 while (true);
 
