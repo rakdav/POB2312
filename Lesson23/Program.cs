@@ -1,9 +1,12 @@
 ﻿char[,] grid = new char[18, 18];
 char[] snake = new char[4];
-int[,] geoSnake =new int[4,2]
+Array.Fill(snake, 'X');
+int[,] geoSnake = new int[4, 2];
+for (int i = 0; i < geoSnake.GetLength(1); i++)
 {
-    {0,3},{0,2},{0,1},{0,0}
-};
+    geoSnake[0, i] = snake.Length - i - 1;
+}
+
 char geo = 'd';
 do
 {
@@ -12,75 +15,49 @@ do
     {
         for (int j = 0; j < grid.GetLength(1); j++)
         {
-           grid[i, j] = '.';
+            grid[i, j] = '.';
         }
     }
-    switch (geo) {
+    switch (geo)
+    {
         case 'd':
+        case 'в':
             {
-                    int temp = ++geoSnake[0, 1];
-                    geoSnake[0, 1] = temp;
-                    for (int i = 1; i < snake.Length; i++)
-                    {
-                        geoSnake[i, 0] = geoSnake[i - 1, 0];
-                        geoSnake[i, 1] = geoSnake[i - 1, 1];
-                    }
-                    for (int i = 0; i < snake.Length; i++)
-                    {
-                        int x = geoSnake[i, 0];
-                        int y = geoSnake[i, 1];
-                        grid[x, y] = 'X';
-                    }
+                Tail();
+                int temp = ++geoSnake[0, 1];
+                geoSnake[0, 1] = temp;
+                Draw();
             }
             break;
-        case 's': 
+        case 's':
+        case 'ы':
             {
-                    int temp = geoSnake[0, 0];
-                    geoSnake[1, 0] = geoSnake[0, 0];
-                    geoSnake[1, 1] = geoSnake[0, 1];
-                    temp++;
-                    geoSnake[0, 0] = temp;
-                    int x1 = geoSnake[0, 0];
-                    int y1 = geoSnake[0, 1];
-                    int x2 = geoSnake[1, 0];
-                    int y2 = geoSnake[1, 1];
-                    grid[x1, y1] = 'X';
-                    grid[x2, y2] = 'X';
+                Tail();
+                int temp = ++geoSnake[0, 0];
+                geoSnake[0, 0] = temp;
+                Draw();
             }
             break;
         case 'a':
+        case 'ф':
             {
-                    int temp = geoSnake[0, 1];
-                    geoSnake[1, 0] = geoSnake[0, 0];
-                    geoSnake[1, 1] = geoSnake[0, 1];
-                    temp--;
-                    geoSnake[0, 1] = temp;
-                    int x1 = geoSnake[0, 0];
-                    int y1 = geoSnake[0, 1];
-                    int x2 = geoSnake[1, 0];
-                    int y2 = geoSnake[1, 1];
-                    grid[x1, y1] = 'X';
-                    grid[x2, y2] = 'X';
+                Tail();
+                int temp = --geoSnake[0, 1];
+                geoSnake[0, 1] = temp;
+                Draw();
             }
             break;
         case 'w':
+        case 'ц':
             {
-
-                    int temp = geoSnake[0, 0];
-                    geoSnake[1, 0] = geoSnake[0, 0];
-                    geoSnake[1, 1] = geoSnake[0, 1];
-                    temp--;
-                    geoSnake[0, 0] = temp;
-                    int x1 = geoSnake[0, 0];
-                    int y1 = geoSnake[0, 1];
-                    int x2 = geoSnake[1, 0];
-                    int y2 = geoSnake[1, 1];
-                    grid[x1, y1] = 'X';
-                    grid[x2, y2] = 'X';
+                Tail();
+                int temp = --geoSnake[0, 0];
+                geoSnake[0, 0] = temp;
+                Draw();
             }
             break;
     }
-    
+
     for (int i = 0; i < grid.GetLength(0); i++)
     {
         for (int j = 0; j < grid.GetLength(1); j++)
@@ -97,3 +74,20 @@ do
 }
 while (true);
 
+void Tail()
+{
+    for (int i = snake.Length - 1; i > 0; i--)
+    {
+        geoSnake[i, 0] = geoSnake[i - 1, 0];
+        geoSnake[i, 1] = geoSnake[i - 1, 1];
+    }
+}
+void Draw ()
+{
+    for (int i = 0; i < snake.Length; i++)
+    {
+        int x = geoSnake[i, 0];
+        int y = geoSnake[i, 1];
+        grid[x, y] = 'X';
+    }
+}
