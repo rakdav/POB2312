@@ -74,18 +74,95 @@
 //}
 
 //чтение из файла
-using (StreamReader reader=new StreamReader("First.txt"))
-{
-    string text = await reader.ReadToEndAsync();
-    Console.WriteLine(text);
-}
+//using (StreamReader reader=new StreamReader("First.txt"))
+//{
+//    string text = await reader.ReadToEndAsync();
+//    Console.WriteLine(text);
+//}
 
-using (StreamReader reader = new StreamReader("First.txt"))
-{
-    string text = "";
-    while((text=await reader.ReadLineAsync()) != null)
-    {
-        Console.WriteLine(text);
-    }
-}
+//using (StreamReader reader = new StreamReader("First.txt"))
+//{
+//    string text = "";
+//    while((text=await reader.ReadLineAsync()) != null)
+//    {
+//        Console.WriteLine(text);
+//    }
+//}
 
+//Работа с дисками
+//DriveInfo[] drives = DriveInfo.GetDrives();
+//foreach (DriveInfo drive in drives)
+//{
+//    Console.WriteLine(drive.Name);
+//    Console.WriteLine(drive.DriveType);
+//    if (drive.IsReady)
+//    {
+//        Console.WriteLine($"{drive.TotalSize/1024} кБайт");
+//        Console.WriteLine(drive.TotalFreeSpace);
+//        Console.WriteLine(drive.VolumeLabel);
+//    }
+//    Console.WriteLine();
+//}
+
+//Directory
+//string dirName = @"C:\";
+//if (Directory.Exists(dirName))
+//{
+//    Console.WriteLine("Папки:");
+//    string[] dirs = Directory.GetDirectories(dirName);
+//    foreach(string dir in dirs)
+//    {
+//        Console.WriteLine(dir);
+//    }
+//    Console.WriteLine("Файлы:");
+//    string[] files = Directory.GetFiles(dirName);
+//    foreach (string file in files)
+//    {
+//        Console.WriteLine(file);
+//    }
+//}
+
+//DirectoryInfo
+//DirectoryInfo dirInfo = new DirectoryInfo(dirName);
+//if (dirInfo.Exists)
+//{
+//    Console.WriteLine("Папки:");
+//    DirectoryInfo[] dirs = dirInfo.GetDirectories();
+//    foreach (DirectoryInfo dir in dirs)
+//    {
+//        Console.WriteLine(dir.FullName);
+//    }
+//    Console.WriteLine("Файлы:");
+//    FileInfo[] files = dirInfo.GetFiles();
+//    foreach (FileInfo file in files)
+//    {
+//        Console.WriteLine(file.Name);
+//    }
+//}
+
+//Задача 3: Копирование файла
+//Попросите пользователя ввести имя исходного файла и имя файла назначения.
+//Скопируйте содержимое исходного файла в файл назначения.
+
+//string file1 = "File.txt";
+//string file2 = "First.txt";
+//FileInfo fi = new FileInfo(file1);
+//if (fi.Exists)
+//{
+//    fi.CopyTo(file2,true);
+//}
+
+//Задача 4: Поиск файлов по расширению
+//Попросите пользователя ввести путь к папке и расширение файла.
+//Найдите все файлы с указанным расширением в указанной папке и
+//выведите их имена на экран.
+//Console.WriteLine("Введите путь к папке:");
+//string path = Console.ReadLine();
+//DirectoryInfo dirInfo = new DirectoryInfo(@$"{path}");
+//FileInfo[] files = dirInfo.GetFiles();
+//Console.Write("Введите расширение для поиска:");
+//string extension = Console.ReadLine();
+//foreach (FileInfo file in files)
+//{
+//    if (file.Extension =="."+extension) Console.WriteLine(file.FullName);
+//}
