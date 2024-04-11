@@ -122,6 +122,30 @@ do
                 else Console.WriteLine($"Файл {file.Name} существует");
             }
             break;
+        case "rm":
+            {
+                FileInfo file = new FileInfo(path + @"\" + commands[1]);
+                if (file.Exists)
+                {
+                    file.Delete();
+                }
+                else Console.WriteLine($"Файл {file.Name} не существует");
+            }
+            break;
+        case "cp":
+            {
+                string currentPath = path + @"\" + commands[1];
+                string newPath = commands[2];
+                FileInfo fileSrc = new FileInfo(currentPath);
+                FileInfo fileSource = new FileInfo(newPath+@"\"+fileSrc.Name);
+                if (fileSrc.Exists)
+                {
+                    if (!fileSource.Exists) fileSource.Create();
+                    fileSrc.CopyTo(fileSource.FullName, true);
+                }
+                else Console.WriteLine($"Файл {fileSrc.Name} не существует");
+            }
+            break;
     }
 }
 while (true);
