@@ -37,6 +37,7 @@
             btMult = new Button();
             btDiv = new Button();
             lbResult = new Label();
+            linkLabel1 = new LinkLabel();
             SuspendLayout();
             // 
             // label1
@@ -130,11 +131,23 @@
             lbResult.TabIndex = 8;
             lbResult.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new Point(545, 494);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(105, 30);
+            linkLabel1.TabIndex = 9;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "linkLabel1";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(684, 575);
+            Controls.Add(linkLabel1);
             Controls.Add(lbResult);
             Controls.Add(btDiv);
             Controls.Add(btMult);
@@ -163,5 +176,6 @@
         private Button btMult;
         private Button btDiv;
         private Label lbResult;
+        private LinkLabel linkLabel1;
     }
 }

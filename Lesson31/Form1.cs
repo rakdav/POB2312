@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace Lesson31
 {
     public partial class Form1 : Form
@@ -70,6 +72,11 @@ namespace Lesson31
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("calc");
         }
     }
 }
