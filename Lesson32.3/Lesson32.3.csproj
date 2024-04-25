@@ -9,4 +9,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="aluminium.jpg" />
+    <None Remove="bambuk.jpg" />
+    <None Remove="plastik.jpg" />
+    <None Remove="wood.jpg" />
+  </ItemGroup>
+
 </Project>
