@@ -199,61 +199,61 @@
 //удаление файла и т.д. Напишите код, который использует эти методы для
 //работы с заданными файлами.
 
-using System;
-using System.IO;
-using System.Text;
-Console.Write("Введите название файла:");
-string file = Console.ReadLine();
-string path = Environment.CurrentDirectory +@"\"+file + ".txt";
-FileManager fm = new FileManager(path);
-fm.Write("Hello");
-Console.WriteLine(fm.Read());
+//using System;
+//using System.IO;
+//using System.Text;
+//Console.Write("Введите название файла:");
+//string file = Console.ReadLine();
+//string path = Environment.CurrentDirectory +@"\"+file + ".txt";
+//FileManager fm = new FileManager(path);
+//fm.Write("Hello");
+//Console.WriteLine(fm.Read());
 
-class FileManager
-{
-    private string fileName;
+//class FileManager
+//{
+//    private string fileName;
 
-    public FileManager(string f)
-    {
-        fileName = f;
-    }
-    public bool Exists()
-    {
-        FileInfo fi= new FileInfo(fileName);
-        return fi.Exists;
-    }
-    public async void Write(string text)
-    {
-        FileInfo fi = new FileInfo(fileName);
-        if (fi.Exists)
-        {
-            using (FileStream fs=fi.OpenWrite())
-            {
-                byte[] buffer = Encoding.Default.GetBytes(text);
-                await fs.WriteAsync(buffer,0,buffer.Length);
-            }
-        }
-        else
-        {
-            using (FileStream fs = fi.Create())
-            {
-                byte[] buffer = Encoding.Default.GetBytes(text);
-                await fs.WriteAsync(buffer, 0, buffer.Length);
-            }
-        }
-    }
-    public string Read()
-    {
-        FileInfo fi = new FileInfo(fileName);
-        byte[] buffer=null;
-        if (fi.Exists)
-        {
-            using (FileStream fs = fi.OpenRead())
-            {
-                buffer = new byte[fs.Length];
-                fs.Read(buffer, 0, buffer.Length);
-            }
-        }
-        return Encoding.Default.GetString(buffer);
-    }
-}
+//    public FileManager(string f)
+//    {
+//        fileName = f;
+//    }
+//    public bool Exists()
+//    {
+//        FileInfo fi= new FileInfo(fileName);
+//        return fi.Exists;
+//    }
+//    public async void Write(string text)
+//    {
+//        FileInfo fi = new FileInfo(fileName);
+//        if (fi.Exists)
+//        {
+//            using (FileStream fs=fi.OpenWrite())
+//            {
+//                byte[] buffer = Encoding.Default.GetBytes(text);
+//                await fs.WriteAsync(buffer,0,buffer.Length);
+//            }
+//        }
+//        else
+//        {
+//            using (FileStream fs = fi.Create())
+//            {
+//                byte[] buffer = Encoding.Default.GetBytes(text);
+//                await fs.WriteAsync(buffer, 0, buffer.Length);
+//            }
+//        }
+//    }
+//    public string Read()
+//    {
+//        FileInfo fi = new FileInfo(fileName);
+//        byte[] buffer=null;
+//        if (fi.Exists)
+//        {
+//            using (FileStream fs = fi.OpenRead())
+//            {
+//                buffer = new byte[fs.Length];
+//                fs.Read(buffer, 0, buffer.Length);
+//            }
+//        }
+//        return Encoding.Default.GetString(buffer);
+//    }
+//}
