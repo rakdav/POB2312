@@ -257,3 +257,5 @@
 //        return Encoding.Default.GetString(buffer);
 //    }
 //}
+MyString str = new MyString("afsdfdsfsdf");
+Console.WriteLine(str.Reverse());
