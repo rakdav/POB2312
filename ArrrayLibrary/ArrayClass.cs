@@ -5,7 +5,7 @@
         private object[] mas;
         public ArrayClass(object[]? mas)
         {
-            this.mas = mas;
+            this.mas = mas!;
         }
         public void Fill(int low,int high)
         {
@@ -33,10 +33,20 @@
             {
                 for (int i = 0; i < mas.Length; i++)
                 {
-                  //  mas[i] = (int)random.Next(low, high);
+                    string res = String.Empty;
+                    for (int j = 0; j < high; j++)
+                        res += (char)random.Next(60, 127);
+                    mas[i] = res;
+                }
+            }
+            else if (mas[0].GetType() == typeof(bool))
+            {
+                for (int i = 0; i < mas.Length; i++)
+                {
+                    if (random.Next(0, 2) == 0) mas[i] = false;
+                    else mas[i] = true;
                 }
             }
         }
-
     }
 }
