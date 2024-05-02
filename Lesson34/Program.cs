@@ -61,7 +61,6 @@
 
 using ArrrayLibrary;
 
-
 ArrayClass arrayClass1 = new ArrayClass(typeof(int),10);
 arrayClass1.Fill(10, 100);
 Console.WriteLine();
