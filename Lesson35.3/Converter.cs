@@ -24,6 +24,5 @@ namespace Lesson35._3
         public double toMmRtSt() => current * 0.0075;
         public double toBar() => current * 0.00001;
         public double toAtm() => current * 0.00001;
-
     }
 }
