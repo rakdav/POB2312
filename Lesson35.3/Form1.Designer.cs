@@ -37,7 +37,17 @@
             btGenerate = new Button();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            tbNumber = new TextBox();
+            label4 = new Label();
+            cbxLong = new ComboBox();
+            label5 = new Label();
+            cbxTemp = new ComboBox();
+            label6 = new Label();
+            cbxPressure = new ComboBox();
+            label7 = new Label();
+            lbResult = new Label();
             groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -127,12 +137,100 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(lbResult);
+            groupBox2.Controls.Add(label7);
+            groupBox2.Controls.Add(cbxPressure);
+            groupBox2.Controls.Add(label6);
+            groupBox2.Controls.Add(cbxTemp);
+            groupBox2.Controls.Add(label5);
+            groupBox2.Controls.Add(cbxLong);
+            groupBox2.Controls.Add(label4);
+            groupBox2.Controls.Add(tbNumber);
             groupBox2.Location = new Point(488, 13);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(511, 336);
             groupBox2.TabIndex = 8;
             groupBox2.TabStop = false;
             groupBox2.Text = "Задача №2";
+            // 
+            // tbNumber
+            // 
+            tbNumber.Location = new Point(21, 59);
+            tbNumber.Name = "tbNumber";
+            tbNumber.Size = new Size(469, 32);
+            tbNumber.TabIndex = 0;
+            tbNumber.TextChanged += textBox1_TextChanged;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(21, 28);
+            label4.Name = "label4";
+            label4.Size = new Size(139, 25);
+            label4.TabIndex = 1;
+            label4.Text = "Введите число";
+            // 
+            // cbxLong
+            // 
+            cbxLong.FormattingEnabled = true;
+            cbxLong.Items.AddRange(new object[] { "сантиметры", "дециметры", "метры", "километры" });
+            cbxLong.Location = new Point(21, 137);
+            cbxLong.Name = "cbxLong";
+            cbxLong.Size = new Size(139, 33);
+            cbxLong.TabIndex = 2;
+            cbxLong.SelectedIndexChanged += cbxLong_SelectedIndexChanged;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(21, 96);
+            label5.Name = "label5";
+            label5.Size = new Size(84, 25);
+            label5.TabIndex = 3;
+            label5.Text = "Из мм в:";
+            // 
+            // cbxTemp
+            // 
+            cbxTemp.FormattingEnabled = true;
+            cbxTemp.Items.AddRange(new object[] { "Кельвины", "Фаренгейты" });
+            cbxTemp.Location = new Point(168, 137);
+            cbxTemp.Name = "cbxTemp";
+            cbxTemp.Size = new Size(152, 33);
+            cbxTemp.TabIndex = 4;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(168, 96);
+            label6.Name = "label6";
+            label6.Size = new Size(152, 25);
+            label6.TabIndex = 5;
+            label6.Text = "Из градусов С в:";
+            // 
+            // cbxPressure
+            // 
+            cbxPressure.FormattingEnabled = true;
+            cbxPressure.Items.AddRange(new object[] { "мм.рт.ст", "бары", "атмосферы", "кгС" });
+            cbxPressure.Location = new Point(326, 137);
+            cbxPressure.Name = "cbxPressure";
+            cbxPressure.Size = new Size(164, 33);
+            cbxPressure.TabIndex = 6;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(326, 96);
+            label7.Name = "label7";
+            label7.Size = new Size(141, 25);
+            label7.TabIndex = 7;
+            label7.Text = "Из Паскалей в:";
+            // 
+            // lbResult
+            // 
+            lbResult.Location = new Point(21, 194);
+            lbResult.Name = "lbResult";
+            lbResult.Size = new Size(469, 117);
+            lbResult.TabIndex = 8;
             // 
             // Form1
             // 
@@ -147,6 +245,8 @@
             Text = "Случайное число";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -161,5 +261,14 @@
         private Button btGenerate;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
+        private TextBox tbNumber;
+        private ComboBox cbxTemp;
+        private Label label5;
+        private ComboBox cbxLong;
+        private Label label4;
+        private Label lbResult;
+        private Label label7;
+        private ComboBox cbxPressure;
+        private Label label6;
     }
 }
