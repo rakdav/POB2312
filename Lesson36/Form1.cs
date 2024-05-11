@@ -40,23 +40,26 @@ namespace Lesson36
 
         private void btEdit_Click(object sender, EventArgs e)
         {
-            int index = lbxTask.SelectedIndex;
-            MyTask currentTask = myTasks[index];
+            string selected = lbxTask.SelectedItem.ToString()!;
+            MyTask currentTask = myTasks.FirstOrDefault(p=>p.getTaskName()==selected)!;
+            int index = myTasks.IndexOf(currentTask);
             currentTask.setTaskName(tbTask.Text);
             currentTask.setPriority(lbxPririty.Text);
             currentTask.setTaskDateTime(dtpTaskDate.Value);
             lbxTask.Items[index]= currentTask.getTaskName();
             lbxTaskDate.Items[index] = currentTask.getTaskDateTime();
-            lbxPririty.Items[index] = currentTask.getPriority();
+            lbxTaskPririty.Items[index] = currentTask.getPriority();
         }
-
         private void lbxTask_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = lbxTask.SelectedIndex;
-            MyTask currentTask = myTasks[index];
-            tbTask.Text = currentTask.getTaskName();
-            lbxPririty.Text = currentTask.getPriority();
-            dtpTaskDate.Value = currentTask.getTaskDateTime();
+            if (lbxTask.SelectedIndex != -1)
+            {
+                int index = lbxTask.SelectedIndex;
+                MyTask currentTask = myTasks[index];
+                tbTask.Text = currentTask.getTaskName();
+                lbxPririty.Text = currentTask.getPriority();
+                dtpTaskDate.Value = currentTask.getTaskDateTime();
+            }
         }
     }
 }
