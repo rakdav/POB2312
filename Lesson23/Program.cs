@@ -1,16 +1,25 @@
-﻿char[,] grid = new char[18, 18];
-char[] snake = new char[4];
-Array.Fill(snake, 'X');
-int[,] geoSnake = new int[4, 2];
-for (int i = 0; i < geoSnake.GetLength(1); i++)
-{
-    geoSnake[0, i] = snake.Length - i - 1;
-}
+﻿using System.Threading.Tasks;
 
-char geo = 'd';
+Console.Write("Введите размер игрового поля:");
+int n = int.Parse(Console.ReadLine());
+Random random = new Random();
+char[,] grid = new char[n, n];
+int length = 3;
+int health = 3;
+char apple = 'O';
+int[,] appleGeo = new int[1, 2];
+char[] snake = new char[length];
+Array.Fill(snake, 'X');
+int[,] geoSnake = new int[length, 2];
+for (int i = 0; i < geoSnake.GetLength(1); i++)
+    geoSnake[0, i] = snake.Length - i - 1;
+appleGeo[0, 0] = random.Next(n);
+appleGeo[0, 1] = random.Next(n);
+ConsoleKey geo = ConsoleKey.RightArrow;
 do
 {
     Console.Clear();
+    Console.WriteLine("Health:" + health);
     for (int i = 0; i < grid.GetLength(0); i++)
     {
         for (int j = 0; j < grid.GetLength(1); j++)
@@ -20,44 +29,129 @@ do
     }
     switch (geo)
     {
-        case 'd':
-        case 'в':
+        case ConsoleKey.RightArrow:
             {
-                Tail();
+                for (int i = snake.Length - 1; i > 0; i--)
+                {
+                    geoSnake[i, 0] = geoSnake[i - 1, 0];
+                    geoSnake[i, 1] = geoSnake[i - 1, 1];
+                }
                 int temp = ++geoSnake[0, 1];
                 geoSnake[0, 1] = temp;
-                Draw();
+                try
+                {
+                    for (int i = 0; i < snake.Length; i++)
+                    {
+                        int x = geoSnake[i, 0];
+                        int y = geoSnake[i, 1];
+                        grid[x, y] = 'X';
+                    }
+                }
+                catch (Exception ex)
+                {
+                    health--;
+                    for (int i = 0; i < geoSnake.GetLength(1); i++)
+                        geoSnake[0, i] = snake.Length - i - 1;
+                    geo = ConsoleKey.RightArrow;
+
+                }
             }
             break;
-        case 's':
-        case 'ы':
+        case ConsoleKey.DownArrow:
             {
-                Tail();
+                for (int i = snake.Length - 1; i > 0; i--)
+                {
+                    geoSnake[i, 0] = geoSnake[i - 1, 0];
+                    geoSnake[i, 1] = geoSnake[i - 1, 1];
+                }
                 int temp = ++geoSnake[0, 0];
                 geoSnake[0, 0] = temp;
-                Draw();
+                try
+                {
+                    for (int i = 0; i < snake.Length; i++)
+                    {
+                        int x = geoSnake[i, 0];
+                        int y = geoSnake[i, 1];
+                        grid[x, y] = 'X';
+                    }
+                }
+                catch
+                {
+                    health--;
+                    for (int i = 0; i < geoSnake.GetLength(1); i++)
+                        geoSnake[0, i] = snake.Length - i - 1;
+                    geo = ConsoleKey.RightArrow;
+                }
             }
             break;
-        case 'a':
-        case 'ф':
+        case ConsoleKey.LeftArrow:
             {
-                Tail();
+                for (int i = snake.Length - 1; i > 0; i--)
+                {
+                    geoSnake[i, 0] = geoSnake[i - 1, 0];
+                    geoSnake[i, 1] = geoSnake[i - 1, 1];
+                }
                 int temp = --geoSnake[0, 1];
                 geoSnake[0, 1] = temp;
-                Draw();
+                try
+                {
+                    for (int i = 0; i < snake.Length; i++)
+                    {
+                        int x = geoSnake[i, 0];
+                        int y = geoSnake[i, 1];
+                        grid[x, y] = 'X';
+                    }
+                }
+                catch
+                {
+                    health--;
+                    for (int i = 0; i < geoSnake.GetLength(1); i++)
+                        geoSnake[0, i] = snake.Length - i - 1;
+                    geo = ConsoleKey.RightArrow;
+                }
             }
             break;
-        case 'w':
-        case 'ц':
+        case ConsoleKey.UpArrow:
             {
-                Tail();
+                for (int i = snake.Length - 1; i > 0; i--)
+                {
+                    geoSnake[i, 0] = geoSnake[i - 1, 0];
+                    geoSnake[i, 1] = geoSnake[i - 1, 1];
+                }
                 int temp = --geoSnake[0, 0];
                 geoSnake[0, 0] = temp;
-                Draw();
+                try
+                {
+                    for (int i = 0; i < snake.Length; i++)
+                    {
+                        int x = geoSnake[i, 0];
+                        int y = geoSnake[i, 1];
+                        grid[x, y] = 'X';
+                    }
+                }
+                catch
+                {
+                    health--;
+                    for (int i = 0; i < geoSnake.GetLength(1); i++)
+                        geoSnake[0, i] = snake.Length - i - 1;
+                    geo = ConsoleKey.RightArrow;
+                }
             }
             break;
     }
-
+    grid[appleGeo[0, 0], appleGeo[0, 1]] = apple;
+    if (geoSnake[0, 1] == appleGeo[0, 1] && geoSnake[0, 0] == appleGeo[0, 0])
+    {
+        length++;
+        int[,] temp = new int[length, 2];
+        Array.Copy(geoSnake, temp, geoSnake.Length);
+        snake = new char[length];
+        Array.Fill(snake, 'X');
+        geoSnake = new int[length, 2];
+        Array.Copy(temp, geoSnake, temp.Length);
+        appleGeo[0, 0] = random.Next(n);
+        appleGeo[0, 1] = random.Next(n);
+    }
     for (int i = 0; i < grid.GetLength(0); i++)
     {
         for (int j = 0; j < grid.GetLength(1); j++)
@@ -68,26 +162,10 @@ do
     }
     if (Console.KeyAvailable)
     {
-        geo = Console.ReadKey().KeyChar;
+        geo = Console.ReadKey().Key;
     }
     Thread.Sleep(500);
+    if (health == 0) break;
 }
 while (true);
-
-void Tail()
-{
-    for (int i = snake.Length - 1; i > 0; i--)
-    {
-        geoSnake[i, 0] = geoSnake[i - 1, 0];
-        geoSnake[i, 1] = geoSnake[i - 1, 1];
-    }
-}
-void Draw ()
-{
-    for (int i = 0; i < snake.Length; i++)
-    {
-        int x = geoSnake[i, 0];
-        int y = geoSnake[i, 1];
-        grid[x, y] = 'X';
-    }
-}
+Console.WriteLine("Game over");
