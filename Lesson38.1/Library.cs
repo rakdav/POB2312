@@ -24,5 +24,17 @@ namespace Lesson38._1
         }
         public int getCount() => list.Count;
         public List<Book> getBooks() => list;
+        public List<Book> getBookByCriteria(string name)
+        {
+            List<Book> books=list.Where(p => p.getTitle().StartsWith(name) ||
+                                        p.getAuthor().StartsWith(name)).ToList();
+            if (books.Count == 0) 
+            { 
+                int year;
+                int.TryParse(name,out year);
+                books=list.Where(p => p.getYear() == year).ToList();
+            }
+            return books;
+        }
     }
 }

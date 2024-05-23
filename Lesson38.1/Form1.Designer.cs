@@ -79,6 +79,7 @@
             label1.Name = "label1";
             label1.Size = new Size(59, 15);
             label1.TabIndex = 3;
+            label1.Text = "Название";
             // 
             // textBoxTitle
             // 
@@ -159,6 +160,7 @@
             textBoxFilter.Name = "textBoxFilter";
             textBoxFilter.Size = new Size(635, 23);
             textBoxFilter.TabIndex = 12;
+            textBoxFilter.TextChanged += textBoxFilter_TextChanged;
             // 
             // Form1
             // 
