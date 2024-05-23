@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             listBoxTitle = new ListBox();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            удалитьToolStripMenuItem = new ToolStripMenuItem();
             listBoxAuthor = new ListBox();
             listBoxYear = new ListBox();
             label1 = new Label();
@@ -42,17 +45,32 @@
             statusStrip1 = new StatusStrip();
             toolStripStatusLabelCountBook = new ToolStripStatusLabel();
             textBoxFilter = new TextBox();
+            contextMenuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // listBoxTitle
             // 
+            listBoxTitle.ContextMenuStrip = contextMenuStrip1;
             listBoxTitle.FormattingEnabled = true;
             listBoxTitle.ItemHeight = 15;
             listBoxTitle.Location = new Point(12, 37);
             listBoxTitle.Name = "listBoxTitle";
             listBoxTitle.Size = new Size(214, 424);
             listBoxTitle.TabIndex = 0;
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { удалитьToolStripMenuItem });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(181, 48);
+            // 
+            // удалитьToolStripMenuItem
+            // 
+            удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
+            удалитьToolStripMenuItem.Size = new Size(180, 22);
+            удалитьToolStripMenuItem.Text = "Удалить";
+            удалитьToolStripMenuItem.Click += удалитьToolStripMenuItem_Click;
             // 
             // listBoxAuthor
             // 
@@ -182,6 +200,7 @@
             Controls.Add(listBoxTitle);
             Name = "Form1";
             Text = "Учет библиотечных книг";
+            contextMenuStrip1.ResumeLayout(false);
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             ResumeLayout(false);
@@ -204,5 +223,7 @@
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel toolStripStatusLabelCountBook;
         private TextBox textBoxFilter;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem удалитьToolStripMenuItem;
     }
 }

@@ -9,7 +9,7 @@ namespace Lesson38._1
             InitializeComponent();
             library = new Library();
             books = library.getBooks();
-            toolStripStatusLabelCountBook.Text = "Количество книг:" + library.getCount().ToString();
+            UpdateForm();
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
@@ -32,7 +32,7 @@ namespace Lesson38._1
             textBoxAuthor.Text = "";
             textBoxTitle.Text = "";
             textBoxYear.Text = "";
-            toolStripStatusLabelCountBook.Text = "Количество книг:"+library.getCount().ToString();
+            toolStripStatusLabelCountBook.Text = "Количество книг:" + library.getCount().ToString();
         }
 
         private void textBoxFilter_TextChanged(object sender, EventArgs e)
@@ -45,6 +45,13 @@ namespace Lesson38._1
             {
                 books = library.getBooks();
             }
+            UpdateForm();
+        }
+
+        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string title = listBoxTitle.SelectedItem.ToString()!;
+            library.Remove(title);
             UpdateForm();
         }
     }
